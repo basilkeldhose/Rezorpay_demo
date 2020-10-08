@@ -1,0 +1,141 @@
+
+<style>
+.payment{
+        background-color:339CFF;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        padding: 1em;
+        border-bottom: 1px solid #dadada;
+        letter-spacing: 3px;
+         text-transform: uppercase;
+    }
+    .order {
+        text-align: center;
+       
+    }
+    .order-id{
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+    .order-price{
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+    .order-name {
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+</style>
+
+<h1 class="payment">payment</h1>
+<div class="order">
+    <label>Item Name : </label>
+    <input type="text" id="item-name" class="order-name">
+    <label>price : </label>
+    <input type="text" id="item-price" class="order-price"><br/>
+    <button id="order-button">Confirm Order</button><br/>
+    <input type="text" class="order-id" id="rzp-text"><br/>
+<button id="rzp-button">Checkout</button>
+  
+</div>
+
+<script>
+    window.addEventListener('load',()=>{
+        const name =sessionStorage.getItem('NAME');
+        const price =sessionStorage.getItem('PRICE')
+        console.log(name)
+        console.log(price)
+        document.getElementById('item-name').value = name
+        document.getElementById('item-price').value = price
+        sessionStorage.clear()
+        
+
+});
+
+
+    document.getElementById('order-button').onclick =function(e){
+        var url ='/api/payment/order'
+        var params = {
+            amount:document.getElementById('item-price').value,
+            currency:"INR",
+            receipt:"Receipt #20",
+            payment_capture: '1'
+        };
+        console.log(params.amount)
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function(res){
+            if(xmlHttp.readyState === 4){
+                res = JSON.parse(xmlHttp.responseText);
+                document.getElementById('rzp-text').value =res.sub.id
+            }
+        }
+        xmlHttp.open("POST",url,true);
+        xmlHttp.setRequestHeader("content-type","application/json");
+        xmlHttp.send(JSON.stringify(params))
+    }
+</script>
+
+<div id=paymentDetails></div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.getElementById('rzp-button').onclick = function(e){
+        var options={
+            "key":"rzp_test_ItPFd7jw0ooxNL",
+            "currency":"INR",
+            "name":"test payment",
+            "descripotion":"razorpay test transaction",
+            "image": "https://previews.123rf.com/images/subhanbaghirov/subhanbaghirov1605/subhanbaghirov160500087/56875269-vector-light-bulb-icon-with-concept-of-idea-brainstorming-idea-illustration-.jpg",
+            "order_id":document.getElementById('rzp-text').value,
+            "handler": function(response){
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature);
+            },
+            "theme": {
+        "color": "#227254"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+<!-- 
+<br/>
+<br/>
+<br/>
+<br/>
+<hr/>
+<label>Order id    :</label><input type=text id=order-id />
+<br/>
+<label>payment id  :</label><input type=text id=order-pay-id />
+<br/>
+<label>Signature   :</label><input type=text id=order-sig />
+
+<br/>
+ <label>Verify Signature</label><button id="verify-button1">Verify</button>
+
+<script>
+document.getElementById('verify-button1').onclick = function(e){
+var url = '/api/payment/verify';
+    var params = {
+  razorpay_order_id:  document.getElementById('order-id').value,  
+  razorpay_payment_id:  document.getElementById('order-pay-id').value,
+  razorpay_signature:  document.getElementById('order-sig').value
+};
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.onreadystatechange = function (res) {
+    if (xmlHttp.readyState === 4) {
+alert(xmlHttp.responseText);
+    }
+}
+xmlHttp.open("POST", url, true); 
+xmlHttp.setRequestHeader("Content-type", "application/json");
+xmlHttp.send(JSON.stringify(params));
+}
+</script>
+ -->

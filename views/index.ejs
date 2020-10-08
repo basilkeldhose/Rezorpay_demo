@@ -1,0 +1,96 @@
+<style>
+    .main_head {
+        background-color:339CFF;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        padding: 1em;
+        border-bottom: 1px solid #dadada;
+        letter-spacing: 3px;
+         text-transform: uppercase;
+    }
+    .head2 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding: 1em 0;
+        border-bottom: 1px solid #D0D0D0;
+    }
+    h3 {
+   
+        font-size: 1em;
+        font-family: fontSans;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: .025em;
+    }
+    .column {
+        float: left;
+        width: 22.5%;
+        padding: 2px;
+    }
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    
+    .button {
+        font-size: 12px;
+        background-color: #4CAF50;
+        border-radius: 8px;
+        padding: 16px 32px;
+        transition-duration: 0.4s;
+    }
+    .button:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+   
+</style>
+<div class="main_head">
+    <h1>SHOPPING CART</h1>
+</div>
+<div class="head2">
+    <h1>My Carts</h1>
+</div>
+
+<div class="row">
+    <div class="column">
+        <h3 id="name">Nike red color running shoe</h3>
+        <img src="public/images/nike.jpg" alt="" width="250px" height="250px">
+        <h3>Price</h3>
+        <h2 id="price">4000</h2>
+        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+    </div>
+    <div class="column">
+        <h3 id="name">Reebook comfort slim shoe</h3>
+        <img src="public/images/reebook.jpg" alt="" width="250px" height="250px">
+        <h3>Price</h3>
+        <h2 id="price">3000</h2>
+        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+    </div>
+    <div class="column">
+        <h3 id="name">Adidas white casul shoe</h3>
+        <img src="public/images/adidas.jpg" alt="" width="250px" height="250px">
+        <h3>Price</h3>
+        <h2 id="price">4500</h2>
+        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+    </div>
+    <div class="column">
+        <h3 id="name">Adidas spots shoe</h3>
+        <img src="public/images/adidas2.jpg" alt="" width="250px" height="250px">
+        <h3>Price</h3>
+        <h2 id="price">7999</h2>
+        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+    </div>
+</div>
+
+
+<script> 
+    document.getElementById('order-button').onclick= function(){
+        const name = document.getElementById('name').innerHTML;
+        const price =document.getElementById('price').innerHTML;
+            sessionStorage.setItem("NAME",name)
+            sessionStorage.setItem("PRICE",price)
+             return;
+    }
+</script>
