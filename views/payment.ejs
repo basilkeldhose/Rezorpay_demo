@@ -104,38 +104,3 @@
     e.preventDefault();
 }
 </script>
-<!-- 
-<br/>
-<br/>
-<br/>
-<br/>
-<hr/>
-<label>Order id    :</label><input type=text id=order-id />
-<br/>
-<label>payment id  :</label><input type=text id=order-pay-id />
-<br/>
-<label>Signature   :</label><input type=text id=order-sig />
-
-<br/>
- <label>Verify Signature</label><button id="verify-button1">Verify</button>
-
-<script>
-document.getElementById('verify-button1').onclick = function(e){
-var url = '/api/payment/verify';
-    var params = {
-  razorpay_order_id:  document.getElementById('order-id').value,  
-  razorpay_payment_id:  document.getElementById('order-pay-id').value,
-  razorpay_signature:  document.getElementById('order-sig').value
-};
-var xmlHttp = new XMLHttpRequest();
-xmlHttp.onreadystatechange = function (res) {
-    if (xmlHttp.readyState === 4) {
-alert(xmlHttp.responseText);
-    }
-}
-xmlHttp.open("POST", url, true); 
-xmlHttp.setRequestHeader("Content-type", "application/json");
-xmlHttp.send(JSON.stringify(params));
-}
-</script>
- -->

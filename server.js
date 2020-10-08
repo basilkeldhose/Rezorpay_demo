@@ -36,19 +36,4 @@ app.post('/api/payment/order', (req, res) => {
     })
 });
 
-
-app.post("/api/payment/verify",(req,res)=>{
-    body=req.body.razorpay_order_id + "|" + req.body.razorpay_payment_id;
-    var crypto = require("crypto");
-    var expectedSignature = crypto.createHmac('sha256', 'LjueYxQO2kh1mmvfXx7zzM6J')
-                                    .update(body.toString())
-                                    .digest('hex');
-                                    console.log("sig"+req.body.razorpay_signature);
-                                    console.log("sig"+expectedSignature);
-    var response = {"status":"failure"}
-    if(expectedSignature === req.body.razorpay_signature)
-     response={"status":"success"}
-        res.send(response);
-    });
-
 app.listen(8000, () => console.log("server connected on the port 8000....!!"))
