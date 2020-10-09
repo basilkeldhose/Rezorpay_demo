@@ -15,82 +15,312 @@
         border-bottom: 1px solid #D0D0D0;
     }
     h3 {
-   
         font-size: 1em;
         font-family: fontSans;
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: .025em;
     }
-    .column {
-        float: left;
-        width: 22.5%;
-        padding: 2px;
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        padding-bottom: 100px;
     }
-    .row::after {
-        content: "";
-        clear: both;
-        display: table;
+    .item {
+        margin-right: 20px;
+        margin-left: 20px;
+        position: relative;
+        overflow: hidden;
     }
-    
-    .button {
-        font-size: 12px;
-        background-color: #4CAF50;
-        border-radius: 8px;
-        padding: 16px 32px;
-        transition-duration: 0.4s;
+    .add-cart {
+        position: absolute;
+        width: 100%;
+        background-color: darkgray;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        cursor: pointer;
+        text-align: center;
     }
-    .button:hover {
-        background-color: #4CAF50; /* Green */
-        color: white;
+    .item:hover .cart1,
+    .item:hover .cart2,
+    .item:hover .cart3,
+    .item:hover .cart4 {
+        bottom: 50px;
+        opacity: 1;
+        padding: 10px;
+        text-decoration: none;
     }
+
+   /* ------------cart-----------------*/
+
+
+.product-container {
+    max-width: 1000px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        padding-bottom: 100px;
+}
+.product-header {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom :4px solid lightgray;
+    margin:  0 auto;
+}
+.product{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+.product-title{
+    width: 50%;
+}
+.price{
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+.quantity{
+    width: 20%;
+    display: flex;
+    align-items: center;
+
+}
+.products{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+.total{
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+.totalprice-container{
+display: flex;
+justify-content: flex-end;
+width: 100%;
+padding: 10px 0;
+}
+.total-amount{
+    width: 35%;
+}
+.total{
+    width: 15%;
+}
+.proceded{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0; 
+}
+.cart{
+    background-color: white;
+    color: black;
+     border: 2px solid #4CAF50;
+     font-size: 16px;
+    padding: 14px 40px;
+    border-radius: 12px;
+}
+.order-now{
+    background-color: #008CBA;
+    font-size: 16px;
+    padding: 14px 40px;
+    border-radius: 12px;
+}
    
 </style>
 <div class="main_head">
     <h1>SHOPPING CART</h1>
+        <button class="cart"><a href="#">View Cart</a> <span>0</span></button> 
 </div>
 <div class="head2">
-    <h1>My Carts</h1>
+    <h1>ITEMS AVAILABLE</h1>
 </div>
 
-<div class="row">
-    <div class="column">
+<div class="container">
+    <div class="item" id="div_id">
         <h3 id="name">Nike red color running shoe</h3>
-        <img src="public/images/nike.jpg" alt="" width="250px" height="250px">
+        <img src="/public/images/nike.jpg" alt="nike">
         <h3>Price</h3>
         <h2 id="price">4000</h2>
-        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+        <a class="add-cart cart1" href="#">Add Cart</a>
     </div>
-    <div class="column">
+    <div class="item">
         <h3 id="name">Reebook comfort slim shoe</h3>
-        <img src="public/images/reebook.jpg" alt="" width="250px" height="250px">
+        <img src="/public/images/reebook.jpg" alt="Reebook">
         <h3>Price</h3>
         <h2 id="price">3000</h2>
-        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+        <a class="add-cart cart2" href="#">Add Cart</a>
     </div>
-    <div class="column">
+    <div class="item">
         <h3 id="name">Adidas white casul shoe</h3>
-        <img src="public/images/adidas.jpg" alt="" width="250px" height="250px">
+        <img src="/public/images/adidas.jpg" alt="Adidas">
         <h3>Price</h3>
         <h2 id="price">4500</h2>
-        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+        <a class="add-cart cart3" href="#">Add Cart</a>
     </div>
-    <div class="column">
+    <div class="item">
         <h3 id="name">Adidas spots shoe</h3>
-        <img src="public/images/adidas2.jpg" alt="" width="250px" height="250px">
+        <img src="/public/images/adidas2.jpg" alt="Adidas">
         <h3>Price</h3>
         <h2 id="price">7999</h2>
-        <button class="button" id="order-button"><a href="payment">Buy</a></button>
+        <a class="add-cart cart4" href="#">Add Cart</a>
+    </div>
+</div>
+
+<div class="main_head">
+    <h1>ITEMS IN CART</h1>
+</div>
+<div class="product-container">
+    <div class="product-header">
+        <h4 class="product-title">PRODUCT</h4>
+        <h4 class="price">PRICE</h4>
+        <h4 class="quantity">QUANTITY</h4>
+        <h4 class="total">TOTAL</h4>
+    </div>
+    <div class="products">
+    </div>
+    <div class="proceded">
+        <button class="order-now" id="order-now"><a href="payment">Order Now</a> </button>
     </div>
 </div>
 
 
 <script> 
-    document.getElementById('order-button').onclick= function(){
-        const name = document.getElementById('name').innerHTML;
-        const price =document.getElementById('price').innerHTML;
-            sessionStorage.setItem("NAME",name)
-            sessionStorage.setItem("PRICE",price)
-             return;
+  let carts =document.querySelectorAll('.add-cart');
+    let items =[
+        {
+            name:"Nike red color running shoe",
+            tag:"Nike red color running shoe",
+            price:4000,
+            inCart:0
+        },
+        {
+            name:"Reebook comfort slim shoe",
+            tag:"Reebook comfort slim shoe",
+            price:3000,
+            inCart:0
+
+        },
+        {
+            name:"Adidas white casul shoe",
+            tag:"Adidas white casul shoe",
+            price:4500,
+            inCart:0
+        },
+        {
+            name:"Adidas spots shoe",
+            tag:"Adidas spots shoe",
+            price:7999,
+            inCart:0
+        }
+    ]
+  for(let i =0;i<carts.length;i++){
+      carts[i].addEventListener('click',()=>{
+          cartItem(items[i]);
+          totalCost(items[i]);
+      })
+    }
+    function onCartNumber(){
+        let cartProduct =localStorage.getItem('cartItem');
+        if(cartProduct){
+            document.querySelector('.cart span').textContent = cartProduct;
+        }
+    }
+
+    function cartItem(items){
+        let cartProduct =localStorage.getItem('cartItem');
+        cartProduct =parseInt(cartProduct);
+        if(cartProduct){
+            localStorage.setItem('cartItem',cartProduct +1);
+            document.querySelector('.cart span').textContent =cartProduct + 1;
+        }
+        else {
+            localStorage.setItem('cartItem',1);
+            document.querySelector('.cart span').textContent =1;
+
+        }
+
+        setItems(items);
+    }
+
+    function setItems(items){
+        let cartItems =localStorage.getItem('itemsInCart');
+        cartItems =JSON.parse(cartItems);
+        console.log("my cart items:",cartItems)
+        if(cartItems != null){
+            if(cartItems[items.tag] == undefined){
+                    cartItems= {
+                            ...cartItems,
+                            [items.tag]:items
+                    }
+            }
+            cartItems[items.tag].inCart +=1
+        }
+        else {
+            items.inCart=1;
+            cartItems ={
+            [items.tag]:items
+        }
+       
+        }
+        localStorage.setItem("itemsInCart",JSON.stringify(cartItems));
+    }
+    
+    function totalCost(items){
+        let cartCost =localStorage.getItem("totalCost");
+        console.log("my cart cost",cartCost) ;
+        if(cartCost !=null){
+            cartCost =parseInt(cartCost);
+            localStorage.setItem("totalCost",cartCost + items.price);
+        }
+        else{
+            localStorage.setItem("totalCost", items.price)
+        }
+    }
+    
+
+    function diaplay(){
+        let cartItems =localStorage.getItem("itemsInCart");
+        cartItems=JSON.parse(cartItems)
+        console.log(cartItems)
+        let itemcontainer =document.querySelector('.products')
+        let cartCost =localStorage.getItem("totalCost");
+        if(cartItems&&itemcontainer){
+            itemcontainer.innerHTML="";
+                Object.values(cartItems).map(item =>{
+                    itemcontainer.innerHTML +=`
+                    <div class=product>${item.name}</div>
+                        <div class="price">${item.price}</div>
+                            <div class="quantity">${item.inCart}</div>
+                                <div class="total">${item.inCart * item.price}</div>`
+                });
+                itemcontainer.innerHTML +=`
+                <div class="totalprice-container">
+                    <h4 class="total-amount">Total Price :</h4>
+                        <h4 class="total">${cartCost}</h4>`
+        }
+    }
+    onCartNumber();
+    diaplay();
+
+    document.getElementById('order-now').onclick = function(items){
+        let cartCost =localStorage.getItem("totalCost");
+        localStorage.setItem("NAMES",items.name)
+        localStorage.setItem("PRICE",cartCost)
+        return;
     }
 </script>

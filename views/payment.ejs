@@ -29,29 +29,50 @@
         margin: 8px 0;
         box-sizing: border-box;
     }
+    .order-button1{
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+        font-size: 16px;
+        padding: 12px 30px;
+        border-radius: 12px;
+    }
+    .checkout{
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+        font-size: 16px;
+        padding: 12px 30px;
+        border-radius: 12px;
+    }
+ 
 </style>
 
 <h1 class="payment">payment</h1>
 <div class="order">
     <label>Item Name : </label>
-    <input type="text" id="item-name" class="order-name">
-    <label>price : </label>
-    <input type="text" id="item-price" class="order-price"><br/>
-    <button id="order-button">Confirm Order</button><br/>
-    <input type="text" class="order-id" id="rzp-text"><br/>
-<button id="rzp-button">Checkout</button>
-  
+    <ul id="names">
+        <li></li>
+    </ul>
+    <label>Total Amount : </label><br/>
+    <input type="text" id="item-price" class="order-price"><br/><br/>
+    <button id="order-button" class="order-button1">Confirm Order</button><br/><br/>
+    <label >Your Order Id :</label><br/>
+    <input type="text" class="order-id" id="rzp-text"><br/><br/>
+    <button id="rzp-button" class="checkout">Checkout</button>
 </div>
 
 <script>
     window.addEventListener('load',()=>{
-        const name =sessionStorage.getItem('NAME');
-        const price =sessionStorage.getItem('PRICE')
-        console.log(name)
+        // const name =localStorage.getItem('NAME');
+        const names =localStorage.getItem('NAMES')
+        const price =localStorage.getItem('PRICE')
+        console.log(names)
         console.log(price)
-        document.getElementById('item-name').value = name
+        document.getElementById('names').value = names
+        
         document.getElementById('item-price').value = price
-        sessionStorage.clear()
+        localStorage.clear()
         
 
 });

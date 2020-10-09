@@ -26,6 +26,9 @@ app.get('/', (req, res) => {
 app.get('/payment',(req,res)=>{
     res.render('payment')
 })
+app.get('/cart',(req,res)=>{
+    res.render('cart')
+})
 
 app.post('/api/payment/order', (req, res) => {
     params  = req.body;
@@ -35,5 +38,7 @@ app.post('/api/payment/order', (req, res) => {
         res.send({ "sub": error, "status": "faild" })
     })
 });
+
+
 
 app.listen(8000, () => console.log("server connected on the port 8000....!!"))
